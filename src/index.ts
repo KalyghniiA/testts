@@ -32,9 +32,9 @@ const TENTHS_LESS_THAN_HUNDRED: readonly string[] = [
  * @param {boolean} [asOrdinal] - Deprecated, use toWordsOrdinal() instead!
  * @returns {string}
  */
-function toWords(number: string, asOrdinal: boolean): string {
-    let words;
-    const num: number = parseInt(number, 10);
+function toWords(number: number | string, asOrdinal?: boolean): string {
+    let words: string;
+    const num: number = typeof number === 'string' ? parseInt(number, 10) : number;
 
     if (!isFinite(num)) {
         throw new TypeError(
