@@ -75,14 +75,17 @@ interface User {
     "role": string,
 }
 
-const getUsers = async (): Promise<void> => {
+const getUsers = async (): Promise<User[]> => {
     try {
         const res: Response = await fetch("https://dummyjson.com/users");
-        console.log(res.json());
+        return await res.json();
     } catch (e: unknown) {
-        if (e as Error) {
+        if (e instanceof Error) {
             console.log(e);
         }
     }
+
+    return [];
 }
 
+console.log(getUsers());
