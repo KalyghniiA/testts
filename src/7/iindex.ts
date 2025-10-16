@@ -9,5 +9,5 @@ export const swapKeysAndValues = <T extends Prev> (prevObj : T): Next => {
             const newKey = prevObj[key];
             return {[newKey]: key}
         })
-        .reduce((a, b) => Object.assign(a, b))
+        .reduce((a, b) => Object.assign(a, b), {})
 }
